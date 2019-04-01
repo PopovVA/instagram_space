@@ -7,22 +7,21 @@ def get_image_extension(url):
     image_url = url.split('.')
     return image_url[-1]
 
-def fetch_hubble_images(url,path):  
+def fetch_hubble_images(url,path,image_id):  
+    url = url.format(image_id)
+    print(url)
     response = requests.get(url).json()
     hubble_image_urls = response['image_files']
-    count = 0
-    for url in hubble_image_urls:
-        image = requests.get(url['file_url'])
-        image_ext = get_image_extension(url['file_url'])
-        image_name_tmp = "images/hubble{}.{}"
-        count+=1
-        image_name = image_name_tmp.format(count,image_ext)
-        with open(image_name, 'wb') as file:
-             file.write(image.content)
+    image_url = hubble_image_urls[-1]
+    image_response = requests.get(image_url['file_url'])
+    image_ext = get_image_extension(image_url['file_url'])
+    image_name_tmp = "images/hubble.{}"
+    image_name = image_name_tmp.format(image_ext)
+    with open(image_name, 'wb') as file:
+        file.write(image_response.content)
 
 def fetch_spacex_last_launch(url,path):    
     response = requests.get(url).json()
-    #print(response)
     lstest_images = response['links']['flickr_images']
     
     count = 0
@@ -42,8 +41,5 @@ if not os.path.exists(directory):
 url = 'https://api.spacexdata.com/v3/launches/latest'
 fetch_spacex_last_launch(url,files_directory)
 
-url = 'http://hubblesite.org/api/v3/image/1'
-fetch_hubble_images(url,files_directory)
-
-
-
+url = 'http://hubblesite.org/api/v3/image/{}'
+fetch_hubble_images(url,files_directory,1)
