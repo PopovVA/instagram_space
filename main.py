@@ -1,7 +1,10 @@
 import requests
 import os
 import pathlib
-
+from instabot import Bot
+import glob
+import random
+import time
 
 def get_image_extension(url):
     image_url = url.split('.')
@@ -33,6 +36,8 @@ def fetch_spacex_last_launch(url,path):
         with open(image_name, 'wb') as file:
              file.write(image.content)
 
+
+
 files_directory= "images/"
 directory = os.path.dirname(files_directory)
 if not os.path.exists(directory):
@@ -43,3 +48,12 @@ fetch_spacex_last_launch(url,files_directory)
 
 url = 'http://hubblesite.org/api/v3/image/{}'
 fetch_hubble_images(url,files_directory,1)
+
+pics = glob.glob("./images/*.jpg")
+
+bot = Bot()
+bot.login(username=os.getenv("LOGIN"), password=os.getenv("PASSWORD"))
+for pic in pics:
+   
+    bot.upload_photo(pic)
+    time.sleep(rendom.randint(1,5))
