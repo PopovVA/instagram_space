@@ -3,7 +3,7 @@ import random
 import time
 from instabot import Bot
 
-def insta_post()
+def create_insta_post()
     pics = glob.glob("./images/*.jpg")
 
     bot = Bot()
