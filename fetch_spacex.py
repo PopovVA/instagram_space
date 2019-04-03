@@ -6,7 +6,7 @@ def fetch_spacex_last_launch(url,path):
     lstest_images = response['links']['flickr_images']
     
     count = 0
-    for url_image in lstest_images:
+    for url_image in latest_images:
         image = requests.get(url_image)
         image_name_tmpl = "images/spacex{}{}"
         count+=1
