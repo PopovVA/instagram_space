@@ -5,8 +5,8 @@ def get_image_extension(url):
     image_url = url.split('.')
     return image_url[-1]
 
-def fetch_hubble_images(url,path,image_id):  
-    url = url.format(image_id)
+def fetch_hubble_images(url_template,path,image_id):  
+    url = url_template.format(image_id)
     response = requests.get(url).json()
     hubble_image_urls = response['image_files']
     image_url = hubble_image_urls[-1]
