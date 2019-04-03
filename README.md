@@ -18,7 +18,7 @@ PASSWORD=your_login_from_instagram
 
 3. Now we can run the code
 ```
-$ python3 'path to main.py' 'your link'
+$ python3 main.py
 ```
 
 ## Project goals
