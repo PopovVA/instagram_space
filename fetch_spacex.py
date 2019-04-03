@@ -3,7 +3,7 @@ import requests
 
 def fetch_spacex_last_launch(url,path):    
     response = requests.get(url).json()
-    lstest_images = response['links']['flickr_images']
+    latest_images = response['links']['flickr_images']
     
     count = 0
     for url_image in latest_images:
