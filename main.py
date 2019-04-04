@@ -6,9 +6,7 @@ import insta
 
 
 files_directory= "images/"
-directory = os.path.dirname(files_directory)
-if not os.path.exists(directory):
-    os.makedirs(directory)
+os.makedirs(directory, exist_ok=True)
 
 url = 'https://api.spacexdata.com/v3/launches/latest'
 fetch_spacex.fetch_spacex_last_launch(url,files_directory)
