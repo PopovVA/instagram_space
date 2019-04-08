@@ -1,6 +1,6 @@
 # instagram_space
 
-Pjocets has been created for demonstrate how working Hubble API, SpaceX API, Instagram API.
+Pjocets was created for demonstrate how working Hubble API, SpaceX API, Instagram API.
 
 ## How it works
 
